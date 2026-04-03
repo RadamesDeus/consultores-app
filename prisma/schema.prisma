@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SubConsultor {
+  id           String      @id @default(cuid())
+  nome         String
+  telefone     String?
+  comissao     Float
+  tipoComissao String      @default("PERCENTUAL") // PERCENTUAL ou FIXO
+  status       String      @default("ATIVO") // ATIVO ou INATIVO
+  pedidos      Pedido[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Ciclo {
+  id         String     @id @default(cuid())
+  codigo     String     @unique // ex: 2026-05
+  dataInicio DateTime
+  dataFim    DateTime
+  status     String     @default("ABERTO") // ABERTO ou FECHADO
+  pedidos    Pedido[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model Pedido {
+  id               String       @id @default(cuid())
+  subConsultorId   String
+  cicloId          String
+  valorTotal       Float
+  lucro            Float
+  status           String       @default("LANCADO") // LANCADO, PAGO, ENTREGUE
+  dataPedido       DateTime     @default(now())
+  observacoes      String?
+  comissaoAplicada Float
+  subConsultor     SubConsultor @relation(fields: [subConsultorId], references: [id])
+  ciclo            Ciclo        @relation(fields: [cicloId], references: [id])
+  pagamentos       Pagamento[]
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+}
+
+model Pagamento {
+  id            String   @id @default(cuid())
+  pedidoId      String
+  valor         Float
+  dataPagamento DateTime @default(now())
+  tipo          String // PIX, DINHEIRO, CARTAO
+  pedido        Pedido   @relation(fields: [pedidoId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
