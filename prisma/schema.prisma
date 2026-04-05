@@ -45,12 +45,26 @@ model Pedido {
   status           String       @default("LANCADO") // LANCADO, PAGO, ENTREGUE
   dataPedido       DateTime     @default(now())
   observacoes      String?
-  comissaoAplicada Float
+  margemMaster     Float        @default(35.0)      // O desconto de "Master" na hora da compra
+  comissaoAplicada Float                            // A comissão do sub-consultor
   subConsultor     SubConsultor @relation(fields: [subConsultorId], references: [id])
   ciclo            Ciclo        @relation(fields: [cicloId], references: [id])
+  itens            ItemPedido[]
   pagamentos       Pagamento[]
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
+}
+
+model ItemPedido {
+  id           String   @id @default(cuid())
+  pedidoId     String
+  nome         String
+  codigo       String?
+  quantidade   Int      @default(1)
+  valorUnico   Float
+  valorTotal   Float    // quantidade * valorUnico (Preço de Catálogo)
+  pedido       Pedido   @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
 }
 
 model Pagamento {
@@ -59,7 +73,7 @@ model Pagamento {
   valor         Float
   dataPagamento DateTime @default(now())
   tipo          String // PIX, DINHEIRO, CARTAO
-  pedido        Pedido   @relation(fields: [pedidoId], references: [id])
+  pedido        Pedido   @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
