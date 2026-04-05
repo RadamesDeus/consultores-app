@@ -283,9 +283,7 @@ export default function FastOrderModal({ customButton = false }: { customButton?
                        <div className="flex justify-between items-center text-sm text-slate-500 font-bold  tracking-wider">
                          <span>A Pagar ( {parsedData.subConsultorNome} )</span>
                          <span className="text-[#e15526] font-extrabold">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalAPagarSubConsultor)}</span>
-                       </div>
-
-                        
+                       </div>                        
 
                        <div className="flex justify-between items-center text-xs font-bold  tracking-wider pt-2 border-t border-slate-100">
                          <span className="text-[#48a84c]">Seu Lucro (Admin)</span>
