@@ -173,11 +173,11 @@ export default async function Dashboard() {
           <div className={styles.chartLegend}>
             <div className={styles.legendItem}>
               <div className={`${styles.legendDot} bg-[#1e3a8a]`} />
-              <span className={styles.legendLabel}>Customers</span>
+              <span className={styles.legendLabel}>Clientes</span>
             </div>
             <div className={styles.legendItem}>
               <div className={`${styles.legendDot} bg-[#3b82f6]`} />
-              <span className={styles.legendLabel}>Users</span>
+              <span className={styles.legendLabel}>Pedidos</span>
             </div>
           </div>
           <div className={styles.chartBars}>
