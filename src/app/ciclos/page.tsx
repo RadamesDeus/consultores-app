@@ -34,9 +34,9 @@ export default async function CiclosPage() {
               </tr>
             </thead>
             <tbody>
-              {ciclos.map((c) => {
-                const lucroTotal = c.pedidos.reduce((acc, curr) => acc + curr.lucro, 0)
-                const faturamentoTotal = c.pedidos.reduce((acc, curr) => acc + curr.valorTotal, 0)
+              {ciclos.map((c: any) => {
+                const lucroTotal = c.pedidos.reduce((acc: number, curr: any) => acc + curr.lucro, 0)
+                const faturamentoTotal = c.pedidos.reduce((acc: number, curr: any) => acc + curr.valorTotal, 0)
                 const isAberto = c.status === 'ABERTO'
 
                 return (

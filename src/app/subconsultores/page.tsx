@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma"
 import AddSubConsultorForm from "@/components/AddSubConsultorForm"
-import { Users, Ban, CheckCircle } from "lucide-react"
+import { Ban, CheckCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import styles from './subconsultores.module.css'
 
@@ -9,7 +9,7 @@ export default async function SubConsultoresPage() {
     orderBy: { createdAt: 'desc' }
   })
 
-  const ativos = subs.filter(s => s.status === 'ATIVO').length
+  const ativos = subs.filter((s: any) => s.status === 'ATIVO').length
   const inativos = subs.length - ativos
 
   return (
@@ -56,7 +56,7 @@ export default async function SubConsultoresPage() {
               </tr>
             </thead>
             <tbody>
-              {subs.map((s) => (
+              {subs.map((s: any) => (
                 <tr key={s.id} className={s.status === 'INATIVO' ? styles.rowInactive : styles.row}>
                   <td className={styles.td}>
                     <div className={styles.memberInfo}>

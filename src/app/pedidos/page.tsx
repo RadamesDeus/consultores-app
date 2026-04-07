@@ -16,7 +16,7 @@ export default async function PedidosPage() {
 
   return (
     <div className={styles.page}>
-      <OrdersHeader ciclos={ciclos} subConsultores={subConsultores} />
+      <OrdersHeader />
 
       <OrdersManager
         initialPedidos={initialPedidos}

@@ -1,6 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Paperclip, Ban, Lock, ClipboardList } from "lucide-react"
+import { Paperclip, Ban, Lock } from "lucide-react"
 import prisma from "@/lib/prisma"
 import styles from './dashboard.module.css'
 
@@ -13,7 +11,6 @@ export default async function Dashboard() {
   let totalLucro = 0
   let qtdVendas = 0
   let pendencias = 0
-  let percentualAtivos = 0
   let pedidosRecentes: any[] = []
   let ranking: any[] = []
 
@@ -24,18 +21,15 @@ export default async function Dashboard() {
       orderBy: { dataPedido: 'desc' }
     })
 
-    totalLucro = pedidos.reduce((acc, curr) => acc + curr.lucro, 0)
+    totalLucro = pedidos.reduce((acc: number, curr: any) => acc + curr.lucro, 0)
     qtdVendas = pedidos.length
-    pendencias = pedidos.filter(p => p.status === 'LANCADO').length
+    pendencias = pedidos.filter((p: any) => p.status === 'LANCADO').length
 
-    const totalSubs = await prisma.subConsultor.count()
-    const activeSubs = await prisma.subConsultor.count({ where: { status: 'ATIVO' } })
-    percentualAtivos = totalSubs > 0 ? (activeSubs / totalSubs) * 100 : 0
 
     pedidosRecentes = pedidos.slice(0, 10)
 
     const rankMap: Record<string, { nome: string, totalValor: number }> = {}
-    pedidos.forEach(p => {
+    pedidos.forEach((p: any) => {
       if (!rankMap[p.subConsultorId]) {
         rankMap[p.subConsultorId] = { nome: p.subConsultor.nome, totalValor: 0 }
       }
@@ -154,7 +148,7 @@ export default async function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {pedidosRecentes.map((ped) => (
+                {pedidosRecentes.map((ped: any) => (
                   <tr key={ped.id} className={styles.row}>
                     <td className={styles.cellId}>{ped.id.substring(ped.id.length - 4)}</td>
                     <td className={styles.cellName}>{ped.subConsultor.nome}</td>
@@ -187,7 +181,7 @@ export default async function Dashboard() {
             </div>
           </div>
           <div className={styles.chartBars}>
-            {ranking.map((r, i) => (
+            {ranking.map((r: any, i: number) => (
               <div key={i} className={styles.chartBarCol}>
                 <div
                   className={styles.chartBar}

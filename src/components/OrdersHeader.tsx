@@ -1,12 +1,6 @@
-import FastOrderModal from './FastOrderModal'
 import styles from './OrdersHeader.module.css'
 
-interface OrdersHeaderProps {
-  ciclos?: any[]
-  subConsultores?: any[]
-}
-
-export default function OrdersHeader({ ciclos, subConsultores }: OrdersHeaderProps) {
+export default function OrdersHeader() {
   return (
     <div className={styles.wrapper}>
       <div>

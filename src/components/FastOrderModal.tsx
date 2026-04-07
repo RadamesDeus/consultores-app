@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { parseFastOrder, ParsedItem } from '@/actions/parseNLP'
 import { confirmGridOrder } from '@/actions/pedidos'
-import { X, Loader2, Sparkles, ArrowRight, CheckCircle2, Delete, Trash } from 'lucide-react'
+import { X, Loader2, Sparkles, ArrowRight, CheckCircle2, Trash } from 'lucide-react'
 
 export default function FastOrderModal({ customButton = false }: { customButton?: boolean }) {
   const [open, setOpen] = useState(false)
@@ -55,7 +55,7 @@ export default function FastOrderModal({ customButton = false }: { customButton?
   }
 
   // -- STEP 2 ACTIONS --
-  const updateItem = (id: string, field: keyof ParsedItem, value: any) => {
+  const updateItem = (id: string, field: keyof ParsedItem, value: string | number) => {
     if(!parsedData) return;
     const newItems = parsedData.items.map(i => {
       if(i.id === id) {
@@ -159,7 +159,7 @@ export default function FastOrderModal({ customButton = false }: { customButton?
                 <form onSubmit={handleParse} className="p-6">
                   <p className="text-xs text-[#6b778c] mb-4 font-semibold uppercase tracking-wider leading-relaxed">
                     Copie e cole a mensagem do cliente. Utilizaremos Inteligência Heurística para criar a Grid de Produtos. <br/>
-                    <span className="text-[#3a4651] mt-2 block">Obrigatório usar números, valores nominais e nome do consultor. Separe itens por "e" ou vírgula.</span>
+                    <span className="text-[#3a4651] mt-2 block">Obrigatório usar números, valores nominais e nome do consultor. Separe itens por &quot;e&quot; ou vírgula.</span>
                   </p>
 
                   <textarea 
