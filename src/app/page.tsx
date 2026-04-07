@@ -118,7 +118,7 @@ export default async function Dashboard() {
           <div className={styles.metricBody}>
             <div>
               <h3 className={styles.metricTitle}>{qtdVendas}</h3>
-              <p className={styles.metricLabel}>Vendas Concluídas</p>
+              <p className={styles.metricLabel}>Pedidos Pagos</p>
             </div>
             <div className={styles.metricIconWrap}>
               <Lock className={styles.metricIcon} />
