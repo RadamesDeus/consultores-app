@@ -1,0 +1,27 @@
+@reference "./globals.css";
+
+/* ============================================================
+   layout.module.css — Estilos do RootLayout
+   ============================================================ */
+
+.body {
+  @apply flex h-screen overflow-hidden antialiased font-sans;
+  background-color: #f4f7f6;
+  color: #3a4651;
+  selection-color: rgba(59, 130, 246, 0.2);
+}
+
+.contentWrapper {
+  @apply flex flex-col flex-1 min-w-0;
+}
+
+.main {
+  @apply flex-1 overflow-y-auto w-full;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+.main::-webkit-scrollbar { width: 6px; }
+.main::-webkit-scrollbar-track { background: transparent; }
+.main::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 3px; }
+
+

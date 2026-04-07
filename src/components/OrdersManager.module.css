@@ -1,0 +1,115 @@
+@reference "../app/globals.css";
+
+/* ============================================================
+   OrdersManager.module.css — Estilos do componente OrdersManager
+   ============================================================ */
+
+.wrapper {
+  @apply flex flex-col gap-6;
+}
+
+/* Cards de Summary */
+.statsGrid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+.card {
+  @apply bg-white flex flex-col rounded-sm overflow-hidden border border-slate-100/50 transition-transform;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+  border-left-width: 4px;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.cardBlue {
+  composes: card;
+  border-left-color: #2d7ff9;
+}
+
+.cardGreen {
+  composes: card;
+  border-left-color: #48a84c;
+}
+
+.cardOrange {
+  composes: card;
+  border-left-color: #ff9f1a;
+}
+
+.cardSlate {
+  composes: card;
+  border-left-color: #e2e8f0;
+}
+
+.cardContent {
+  @apply p-5;
+}
+
+.cardTop {
+  @apply flex justify-between items-start mb-2;
+}
+
+.iconWrap {
+  @apply w-8 h-8 rounded-full flex items-center justify-center;
+}
+
+.iconWrapBlue {
+  composes: iconWrap;
+  @apply bg-blue-50;
+}
+
+.iconWrapGreen {
+  composes: iconWrap;
+  @apply bg-green-50;
+}
+
+.iconWrapOrange {
+  composes: iconWrap;
+  @apply bg-orange-50;
+}
+
+.iconWrapSlate {
+  composes: iconWrap;
+  @apply bg-slate-50;
+}
+
+.iconBlue {
+  @apply w-4 h-4;
+  color: #2d7ff9;
+}
+
+.iconGreen {
+  @apply w-4 h-4;
+  color: #48a84c;
+}
+
+.iconOrange {
+  @apply w-4 h-4;
+  color: #ff9f1a;
+}
+
+.iconSlate {
+  @apply w-4 h-4 text-slate-400;
+}
+
+.cardTag {
+  @apply text-[10px] font-extrabold uppercase tracking-widest;
+  color: #94a3b8;
+}
+
+.cardValue {
+  @apply text-xl font-extrabold tracking-tighter;
+  color: #3a4651;
+}
+
+.cardValueGreen {
+  composes: cardValue;
+  color: #48a84c;
+}
+
+.cardLabel {
+  @apply text-[10px] font-bold uppercase mt-1 tracking-wider;
+  color: #94a3b8;
+}
+

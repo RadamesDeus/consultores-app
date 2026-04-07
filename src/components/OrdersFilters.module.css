@@ -1,0 +1,80 @@
+@reference "../app/globals.css";
+
+/* ============================================================
+   OrdersFilters.module.css — Estilos do componente OrdersFilters
+   ============================================================ */
+
+.wrapper {
+  @apply bg-white border border-slate-100 p-5 mb-6 flex flex-col gap-4;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.header {
+  @apply flex items-center justify-between;
+}
+
+.headerLeft {
+  @apply flex items-center gap-2;
+}
+
+.headerIcon {
+  @apply w-4 h-4 text-slate-400;
+}
+
+.headerLabel {
+  @apply text-[11px] font-extrabold uppercase tracking-widest;
+  color: #64748b;
+}
+
+.clearBtn {
+  @apply text-[10px] font-bold uppercase tracking-wider flex items-center gap-1;
+  color: #e15526;
+}
+.clearBtn:hover {
+  @apply underline;
+}
+
+.clearIcon {
+  @apply w-3 h-3;
+}
+
+.grid {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-4;
+}
+
+.field {
+  @apply flex flex-col gap-1.5;
+}
+
+.label {
+  @apply text-[10px] font-bold uppercase tracking-wider pl-1;
+  color: #94a3b8;
+}
+
+.inputWrapper {
+  @apply relative;
+}
+
+.inputIcon {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400;
+}
+
+.input {
+  @apply w-full px-4 py-2 text-slate-700 text-sm focus:outline-none border border-transparent transition-all rounded-sm;
+  background-color: #f4f7f6;
+}
+.input:focus {
+  @apply ring-1 border-[#2d7ff9];
+  --tw-ring-color: #2d7ff9;
+}
+
+.inputWithIcon {
+  composes: input;
+  @apply pl-10;
+}
+
+.select {
+  composes: input;
+  @apply appearance-none cursor-pointer;
+}
+

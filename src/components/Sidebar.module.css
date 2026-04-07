@@ -1,0 +1,105 @@
+@reference "../app/globals.css";
+
+/* ============================================================
+   Sidebar.module.css — Estilos do componente Sidebar
+   ============================================================ */
+
+.sidebar {
+  @apply w-64 bg-white border-r flex flex-col h-full shrink-0;
+  border-color: #eaedf1;
+}
+
+/* Área do usuário (topo) */
+.userBox {
+  @apply h-[72px] border-b flex items-center px-6 gap-3 pt-2 pb-2;
+  border-color: #eaedf1;
+}
+
+.avatar {
+  @apply w-10 h-10 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center relative shadow-inner;
+}
+
+.avatarIcon {
+  @apply w-10 h-10 text-slate-400 absolute;
+}
+
+.userInfo {
+  @apply flex flex-col;
+}
+
+.userName {
+  @apply text-xs font-bold tracking-wider uppercase;
+  color: #3a4651;
+}
+
+.userRole {
+  @apply text-[10px] font-semibold tracking-wider flex items-center gap-1 cursor-pointer;
+  color: #94a3b8;
+}
+.userRole:hover {
+  color: #4b5563;
+}
+
+/* Menu de navegação */
+.nav {
+  @apply flex-1 overflow-y-auto py-6 px-4 flex flex-col gap-1;
+}
+
+.navLabel {
+  @apply text-[10px] uppercase font-bold tracking-widest pl-3 pb-3;
+  color: #94a3b8;
+}
+
+.navLink {
+  @apply flex items-center justify-between px-3 py-3 rounded-md transition-colors font-semibold;
+  color: #6b778c;
+}
+.navLink:hover {
+  @apply bg-slate-50;
+}
+
+.navLinkActive {
+  composes: navLink;
+  @apply font-bold;
+  color: #2d7ff9;
+  background-color: #f4f7f6;
+}
+
+.navLinkInner {
+  @apply flex items-center gap-4;
+}
+
+.navIcon {
+  @apply w-5 h-5;
+  color: #94a3b8;
+}
+
+.navIconActive {
+  composes: navIcon;
+  color: #2d7ff9;
+}
+
+.navText {
+  @apply tracking-wide text-sm;
+}
+
+/* Badge de notificação */
+.badge {
+  @apply text-[10px] rounded px-1.5 py-0.5 font-bold text-white;
+}
+
+.badgeDefault {
+  composes: badge;
+  background-color: #475569;
+}
+
+.badgeAlert {
+  composes: badge;
+  background-color: #ff9f1a;
+}
+
+.badgeActive {
+  composes: badge;
+  background-color: #2d7ff9;
+}
+

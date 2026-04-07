@@ -1,0 +1,29 @@
+@reference "../app/globals.css";
+
+/* ============================================================
+   OrdersHeader.module.css — Estilos do componente OrdersHeader
+   ============================================================ */
+
+.wrapper {
+  @apply flex flex-col gap-1 md:flex-row md:items-center md:justify-between mb-8;
+}
+
+.breadcrumb {
+  @apply flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-1;
+  color: #94a3b8;
+}
+
+.breadcrumbActive {
+  color: #2d7ff9;
+}
+
+.title {
+  @apply text-3xl font-extrabold tracking-tight;
+  color: #3a4651;
+}
+
+.subtitle {
+  @apply text-sm font-medium mt-1;
+  color: #64748b;
+}
+

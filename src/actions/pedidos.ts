@@ -138,3 +138,78 @@ export async function marcarPedidoComoPago(id: string) {
     return { success: false, error: 'Falha ao atualizar pedido' }
   }
 }
+
+export async function marcarPedidoComoEntregue(id: string) {
+  try {
+    const pedido = await prisma.pedido.update({
+      where: { id },
+      data: { status: 'ENTREGUE' }
+    })
+    revalidatePath('/')
+    revalidatePath('/pedidos')
+    return { success: true, data: pedido }
+  } catch (error) {
+    console.error("Erro ao atualizar status do pedido:", error)
+    return { success: false, error: 'Falha ao atualizar pedido' }
+  }
+}
+
+export async function getTodosPedidos() {
+  try {
+    return await prisma.pedido.findMany({
+      include: {
+        subConsultor: true,
+        ciclo: true,
+        itens: true
+      },
+      orderBy: { dataPedido: 'desc' }
+    })
+  } catch (error) {
+    console.error("Erro ao buscar todos os pedidos:", error)
+    return []
+  }
+}
+
+export async function atualizarItensPedido(
+  pedidoId: string,
+  itens: { id?: string; nome: string; codigo: string; quantidade: number; valorUnico: number; valorTotal: number }[]
+) {
+  try {
+    const pedido = await prisma.pedido.findUnique({
+      where: { id: pedidoId },
+      include: { subConsultor: true }
+    })
+    if (!pedido) throw new Error("Pedido não encontrado")
+
+    // Recalcular totais
+    const novoValorTotal = itens.reduce((acc, i) => acc + i.valorTotal, 0)
+    const diferencaMargem = pedido.margemMaster - pedido.comissaoAplicada
+    const novoLucro = novoValorTotal * (diferencaMargem / 100)
+
+    // Substituição completa dos itens: deleta todos e recria
+    await prisma.$transaction([
+      prisma.itemPedido.deleteMany({ where: { pedidoId } }),
+      prisma.itemPedido.createMany({
+        data: itens.map(i => ({
+          pedidoId,
+          nome: i.nome,
+          codigo: i.codigo || null,
+          quantidade: i.quantidade,
+          valorUnico: i.valorUnico,
+          valorTotal: i.valorTotal
+        }))
+      }),
+      prisma.pedido.update({
+        where: { id: pedidoId },
+        data: { valorTotal: novoValorTotal, lucro: novoLucro }
+      })
+    ])
+
+    revalidatePath('/')
+    revalidatePath('/pedidos')
+    return { success: true }
+  } catch (error) {
+    console.error("Erro ao atualizar itens do pedido:", error)
+    return { success: false, error: 'Falha ao salvar alterações' }
+  }
+}

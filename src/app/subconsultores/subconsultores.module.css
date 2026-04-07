@@ -1,0 +1,148 @@
+@reference "../globals.css";
+
+/* ============================================================
+   subconsultores.module.css
+   ============================================================ */
+
+.page {
+  @apply p-4 md:p-8 flex flex-col gap-6;
+}
+
+.metricsGrid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+}
+
+.metricCard {
+  @apply bg-white p-6 flex flex-col relative overflow-hidden border border-slate-100;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.metricBar {
+  @apply absolute left-0 top-0 bottom-0 w-1;
+}
+
+.metricBarBlue { composes: metricBar; background-color: #2d7ff9; }
+.metricBarGreen { composes: metricBar; background-color: #48a84c; }
+.metricBarOrange { composes: metricBar; background-color: #e15526; }
+
+.metricValue {
+  @apply text-3xl font-extrabold tracking-tight;
+  color: #3a4651;
+}
+
+.metricLabel {
+  @apply text-xs uppercase tracking-widest mt-1 font-bold;
+  color: #94a3b8;
+}
+
+/* Table section */
+.tableSection {
+  @apply bg-white flex flex-col mt-2 border border-slate-100;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.tableSectionHeader {
+  @apply p-5 border-b flex justify-between items-center;
+  border-color: rgba(241, 245, 249, 0.5);
+  background-color: #fbfcfd;
+}
+
+.tableSectionTitle {
+  @apply text-xs uppercase tracking-widest font-extrabold;
+  color: #3a4651;
+}
+
+.tableWrap {
+  @apply overflow-x-auto;
+}
+
+.table {
+  @apply w-full text-left border-collapse;
+}
+
+.thead {
+  background-color: #fbfcfd;
+}
+
+.th {
+  @apply py-4 px-6 text-[11px] uppercase tracking-wider font-bold text-slate-500;
+}
+
+.thCenter { composes: th; @apply text-center; }
+.thRight { composes: th; @apply text-right; }
+
+.row {
+  @apply border-b border-slate-50 hover:bg-slate-50/50 transition-colors;
+}
+
+.rowInactive {
+  composes: row;
+  @apply opacity-60;
+}
+
+.td {
+  @apply py-4 px-6;
+}
+
+.tdCenter { composes: td; @apply text-center; }
+.tdRight { composes: td; @apply text-right; }
+
+.memberInfo {
+  @apply flex items-center gap-3;
+}
+
+.memberAvatar {
+  @apply w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs;
+  background-color: #f4f7f6;
+  color: #2d7ff9;
+}
+
+.memberName {
+  @apply font-bold text-[13px];
+  color: #3a4651;
+}
+
+.memberId {
+  @apply text-[10px] font-semibold tracking-wider;
+  color: #94a3b8;
+}
+
+.phone {
+  @apply font-medium text-[13px];
+  color: #6b778c;
+}
+
+.commission {
+  @apply font-bold text-[13px];
+  color: #3a4651;
+}
+
+.statusBadge {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] text-[10px] font-bold uppercase tracking-widest;
+}
+
+.statusAtivo {
+  composes: statusBadge;
+  background-color: rgba(72, 168, 76, 0.1);
+  color: #48a84c;
+}
+
+.statusInativo {
+  composes: statusBadge;
+  background-color: rgba(225, 85, 38, 0.1);
+  color: #e15526;
+}
+
+.statusIcon {
+  @apply w-3 h-3;
+}
+
+.dateCell {
+  @apply font-medium text-[12px];
+  color: #6b778c;
+}
+
+.emptyRow {
+  @apply py-12 text-center text-slate-400 font-semibold;
+}
+

@@ -37,22 +37,23 @@ model Ciclo {
 }
 
 model Pedido {
-  id               String       @id @default(cuid())
-  subConsultorId   String
-  cicloId          String
-  valorTotal       Float
-  lucro            Float
-  status           String       @default("LANCADO") // LANCADO, PAGO, ENTREGUE
-  dataPedido       DateTime     @default(now())
-  observacoes      String?
-  margemMaster     Float        @default(35.0) // O desconto de "Master" na hora da compra
-  comissaoAplicada Float // A comissão do sub-consultor
-  subConsultor     SubConsultor @relation(fields: [subConsultorId], references: [id])
-  ciclo            Ciclo        @relation(fields: [cicloId], references: [id])
-  itens            ItemPedido[]
-  pagamentos       Pagamento[]
-  createdAt        DateTime     @default(now())
-  updatedAt        DateTime     @updatedAt
+  id                 String       @id @default(cuid())
+  subConsultorId     String
+  cicloId            String
+  valorTotal         Float
+  lucro              Float
+  status             String       @default("LANCADO") // LANCADO, PAGO, ENTREGUE
+  dataPedido         DateTime     @default(now())
+  observacoes        String?
+  margemMaster       Float        @default(35.0) // O desconto de "Master" na hora da compra
+  comissaoAplicada   Float // A comissão do sub-consultor
+  subConsultor       SubConsultor @relation(fields: [subConsultorId], references: [id])
+  ciclo              Ciclo        @relation(fields: [cicloId], references: [id])
+  itens              ItemPedido[]
+  pagamentos         Pagamento[]
+  quantidadeParcelas Int          @default(1)
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
 }
 
 model ItemPedido {

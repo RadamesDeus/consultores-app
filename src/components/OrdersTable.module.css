@@ -1,0 +1,311 @@
+@reference "../app/globals.css";
+
+/* ============================================================
+   OrdersTable.module.css — Estilos do componente OrdersTable
+   ============================================================ */
+
+.wrapper {
+  @apply bg-white border border-slate-100 rounded-sm overflow-hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.tableScroll {
+  @apply overflow-x-auto;
+}
+
+.table {
+  @apply w-full text-left border-collapse;
+}
+
+/* ---- Cabeçalho ---- */
+.thead {
+  @apply border-b border-slate-100;
+  background-color: #f8fafb;
+}
+
+.th {
+  @apply py-4 px-5 text-[11px] uppercase tracking-wider font-extrabold text-slate-800;
+}
+
+.thRight {
+  composes: th;
+  @apply text-right;
+}
+
+.thCenter {
+  composes: th;
+  @apply text-center;
+}
+
+.thGreen {
+  composes: th;
+  @apply text-right;
+  color: #48a84c;
+}
+
+.thInner {
+  @apply flex items-center gap-2;
+}
+
+.thIcon {
+  @apply w-3 h-3 text-slate-400;
+}
+
+/* ---- Linhas da tabela ---- */
+.row {
+  @apply border-b border-slate-50 hover:bg-[#f4f7f6]/50 transition-colors cursor-pointer;
+}
+
+.rowExpanded {
+  composes: row;
+  background-color: rgba(244, 247, 246, 0.4);
+}
+
+.expandedRow {
+  background-color: #fcfdfe;
+}
+
+/* Cells */
+.td {
+  @apply py-4 px-5;
+}
+
+.tdRight {
+  @apply py-4 px-5 text-right;
+}
+
+.tdCenter {
+  @apply py-4 px-5 text-center;
+}
+
+.orderId {
+  @apply flex flex-col;
+}
+
+.orderCode {
+  @apply font-bold text-[13px] tracking-tight;
+  color: #2d7ff9;
+}
+
+.orderDate {
+  @apply text-[10px] font-bold uppercase mt-0.5;
+  color: #94a3b8;
+}
+
+.consultorName {
+  @apply font-semibold tracking-tight;
+  color: #3a4651;
+}
+
+.valorTotal {
+  @apply font-medium;
+  color: #3a4651;
+}
+
+.lucro {
+  @apply font-extrabold;
+  color: #48a84c;
+}
+
+/* Status badges */
+.statusBadge {
+  @apply text-[10px] uppercase font-extrabold tracking-widest px-2 py-1 rounded-sm border;
+}
+
+.statusLancado {
+  composes: statusBadge;
+  color: #ff9f1a;
+  background-color: rgba(255, 159, 26, 0.1);
+  border-color: rgba(255, 159, 26, 0.2);
+}
+
+.statusPago {
+  composes: statusBadge;
+  color: #48a84c;
+  background-color: rgba(72, 168, 76, 0.1);
+  border-color: rgba(72, 168, 76, 0.2);
+}
+
+.statusEntregue {
+  composes: statusBadge;
+  color: #2d7ff9;
+  background-color: rgba(45, 127, 249, 0.1);
+  border-color: rgba(45, 127, 249, 0.2);
+}
+
+/* Botões de ação */
+.actionsCell {
+  @apply flex items-center justify-center gap-2;
+}
+
+.btnPago {
+  @apply text-white p-1.5 rounded-sm transition-colors;
+  background-color: #48a84c;
+}
+.btnPago:hover { background-color: #3d9140; }
+.btnPago:disabled { @apply opacity-50; }
+
+.btnEntregue {
+  @apply text-white p-1.5 rounded-sm transition-colors;
+  background-color: #2d7ff9;
+}
+.btnEntregue:hover { background-color: #1e3a8a; }
+.btnEntregue:disabled { @apply opacity-50; }
+
+.btnEdit {
+  @apply text-slate-400 p-1.5 rounded-sm transition-colors;
+}
+.btnEdit:hover {
+  @apply bg-blue-50;
+  color: #2d7ff9;
+}
+
+.actionIcon {
+  @apply w-4 h-4;
+}
+
+/* ---- Painel expandido ---- */
+.expandedPanel {
+  @apply px-8 py-6 border-b border-slate-100;
+}
+
+.expandedHeader {
+  @apply flex justify-between items-start mb-6;
+}
+
+.expandedTitleLabel {
+  @apply text-[10px] uppercase font-bold tracking-widest mb-1;
+  color: #94a3b8;
+}
+
+.expandedTitle {
+  @apply text-sm font-bold;
+  color: #3a4651;
+}
+
+.expandedTitleName {
+  color: #2d7ff9;
+}
+
+.expandedMeta {
+  @apply flex items-start gap-6;
+}
+
+.obsLabel {
+  @apply text-[10px] uppercase font-bold tracking-widest mb-1 text-right;
+  color: #94a3b8;
+}
+
+.obsText {
+  @apply text-xs max-w-64 italic;
+  color: #64748b;
+}
+
+.editBtn {
+  @apply flex items-center gap-2 px-4 py-2 text-white text-[11px] font-bold uppercase tracking-widest rounded-sm transition-colors shrink-0;
+  background-color: #2d7ff9;
+}
+.editBtn:hover { background-color: #1e61cc; }
+
+.editBtnIcon {
+  @apply w-3.5 h-3.5;
+}
+
+/* Inner table de itens */
+.itemsTable {
+  @apply bg-white border border-slate-100 rounded-sm overflow-hidden;
+}
+
+.itemsTableEl {
+  @apply w-full text-xs;
+}
+
+.itemsThead {
+  @apply bg-slate-50/50 border-b border-slate-100;
+}
+
+.itemsTh {
+  @apply py-2.5 px-4 font-bold uppercase tracking-widest text-[9px];
+  color: #94a3b8;
+}
+
+.itemsThCenter { composes: itemsTh; @apply text-center; }
+.itemsThRight { composes: itemsTh; @apply text-right; }
+
+.itemsRow {
+  @apply border-b border-slate-50 last:border-0 hover:bg-slate-50/30 transition-colors;
+}
+
+.itemCode {
+  @apply py-2.5 px-4 font-mono;
+  color: #94a3b8;
+}
+
+.itemName {
+  @apply py-2.5 px-4 font-bold tracking-tight;
+  color: #3a4651;
+}
+
+.itemQty {
+  @apply py-2.5 px-4 text-center font-bold text-slate-600;
+}
+
+.itemUnit {
+  @apply py-2.5 px-4 text-right text-slate-500;
+}
+
+.itemTotal {
+  @apply py-2.5 px-4 text-right font-bold text-slate-700;
+}
+
+/* Tfoot da inner table */
+.itemsTfoot {
+  @apply bg-slate-50/30 font-bold border-t border-slate-100;
+}
+
+.itemsFootCell {
+  @apply py-3 px-4 text-right uppercase tracking-widest text-[10px] text-slate-500;
+}
+
+.itemsFootValue {
+  @apply py-3 px-4 text-right text-sm;
+  color: #3a4651;
+}
+
+.itemsFootGreen {
+  @apply py-3 px-4 text-right uppercase tracking-widest text-[10px];
+  color: #48a84c;
+}
+
+.itemsFootValueGreen {
+  @apply py-3 px-4 text-right text-sm;
+  color: #48a84c;
+}
+
+/* Empty state */
+.emptyCell {
+  @apply py-20 text-center;
+}
+
+.emptyInner {
+  @apply flex flex-col items-center gap-4;
+}
+
+.emptyIcon {
+  @apply w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center;
+}
+
+.emptyIconSvg {
+  @apply w-8 h-8 text-slate-200;
+}
+
+.emptyTitle {
+  @apply font-bold uppercase tracking-widest text-xs;
+  color: #94a3b8;
+}
+
+.emptySubtitle {
+  @apply text-[10px] mt-1 uppercase font-bold tracking-tighter;
+  color: #cbd5e1;
+}
+

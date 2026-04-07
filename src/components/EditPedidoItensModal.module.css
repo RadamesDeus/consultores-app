@@ -1,0 +1,232 @@
+@reference "../app/globals.css";
+
+/* ============================================================
+   EditPedidoItensModal.module.css
+   ============================================================ */
+
+.overlay {
+  @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  @apply bg-white rounded border border-slate-200 w-full max-w-4xl max-h-[90vh] flex flex-col;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.modalHeader {
+  @apply flex justify-between items-center px-6 py-4 border-b border-[#eaedf1] shrink-0;
+  background-color: #fbfcfd;
+}
+
+.modalTitle {
+  @apply text-sm font-extrabold uppercase tracking-widest flex items-center gap-2;
+  color: #3a4651;
+}
+
+.modalTitleIcon {
+  @apply w-4 h-4;
+  color: #2d7ff9;
+}
+
+.modalMeta {
+  @apply text-[10px] font-bold uppercase tracking-wider mt-0.5;
+  color: #94a3b8;
+}
+
+.metaHighlight {
+  color: #2d7ff9;
+}
+
+.closeBtn {
+  @apply p-1.5 rounded text-slate-400 transition-colors;
+}
+.closeBtn:hover { @apply bg-slate-100; }
+
+.closeIcon {
+  @apply w-5 h-5;
+}
+
+/* Body */
+.body {
+  @apply flex-1 overflow-y-auto p-6;
+}
+
+/* Table */
+.tableWrap {
+  @apply border border-slate-100 rounded-sm overflow-hidden;
+}
+
+.table {
+  @apply w-full text-sm border-collapse;
+}
+
+.thead {
+  @apply border-b border-slate-100;
+  background-color: #f8fafb;
+}
+
+.th {
+  @apply py-3 px-3 text-[10px] uppercase tracking-widest font-extrabold text-left;
+  color: #64748b;
+}
+
+.thCenter { composes: th; @apply text-center; }
+
+.row {
+  @apply border-b border-slate-50 hover:bg-slate-50/40;
+}
+
+.td {
+  @apply p-2;
+}
+
+.tdRight {
+  @apply p-2 text-right font-extrabold pr-4;
+  color: #3a4651;
+}
+
+.tdCenter {
+  @apply p-2 text-center;
+}
+
+.inputBase {
+  @apply w-full px-2 py-1.5 rounded text-sm outline-none border border-transparent;
+  background-color: #f4f7f6;
+}
+.inputBase:focus {
+  @apply ring-1 border-[#2d7ff9];
+  --tw-ring-color: #2d7ff9;
+}
+
+.inputQty {
+  composes: inputBase;
+  @apply text-center font-bold;
+  color: #3a4651;
+}
+
+.inputText {
+  composes: inputBase;
+  color: #3a4651;
+}
+
+.inputCode {
+  composes: inputBase;
+  @apply font-mono;
+  color: #64748b;
+}
+
+.priceWrap {
+  @apply relative;
+}
+
+.pricePrefix {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold;
+  color: #94a3b8;
+}
+
+.inputPrice {
+  composes: inputBase;
+  @apply pl-8 font-bold;
+  color: #3a4651;
+}
+
+.removeBtn {
+  @apply p-1.5 rounded transition-colors;
+  color: #f87171;
+}
+.removeBtn:hover {
+  @apply bg-red-50;
+  color: #dc2626;
+}
+
+.removeIcon {
+  @apply w-4 h-4;
+}
+
+.addRowBtn {
+  @apply w-full py-3 flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-widest border-t border-slate-100 transition-colors;
+  color: #2d7ff9;
+}
+.addRowBtn:hover {
+  background-color: #f4f7f6;
+}
+
+.addRowIcon {
+  @apply w-4 h-4;
+}
+
+/* Summary */
+.summary {
+  @apply mt-6 flex justify-end;
+}
+
+.summaryBox {
+  @apply w-72 border border-slate-100 rounded-sm p-4 flex flex-col gap-2.5;
+  background-color: #f8fafb;
+}
+
+.summaryRow {
+  @apply flex justify-between text-xs font-bold uppercase tracking-wider pb-2.5 border-b border-slate-100;
+  color: #64748b;
+}
+
+.summaryValue {
+  @apply font-extrabold text-sm;
+  color: #3a4651;
+}
+
+.summaryLucroRow {
+  @apply flex justify-between text-xs font-bold uppercase tracking-wider;
+}
+
+.summaryLucroLabel {
+  color: #48a84c;
+}
+
+.summaryLucroValue {
+  @apply font-extrabold;
+  color: #48a84c;
+}
+
+/* Feedback */
+.feedback {
+  @apply mt-4 p-3 rounded text-xs font-bold text-center border;
+}
+
+.feedbackSuccess {
+  composes: feedback;
+  @apply bg-green-50 text-green-700 border-green-100;
+}
+
+.feedbackError {
+  composes: feedback;
+  @apply bg-red-50 text-red-700 border-red-100;
+}
+
+/* Footer */
+.footer {
+  @apply shrink-0 px-6 py-4 border-t border-slate-100 flex justify-between items-center;
+  background-color: #fbfcfd;
+}
+
+.cancelBtn {
+  @apply px-4 py-2 text-xs font-bold uppercase tracking-widest rounded transition-colors;
+  color: #64748b;
+}
+.cancelBtn:hover { @apply bg-slate-100; }
+
+.saveBtn {
+  @apply px-8 py-2.5 text-white font-extrabold text-xs uppercase tracking-widest rounded flex items-center gap-2 transition-colors;
+  background-color: #2d7ff9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.saveBtn:hover { background-color: #1e61cc; }
+.saveBtn:disabled { @apply opacity-50; }
+
+.saveBtnIcon {
+  @apply w-4 h-4;
+}
+

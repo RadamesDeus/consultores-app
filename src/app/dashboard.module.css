@@ -1,0 +1,217 @@
+@reference "./globals.css";
+
+/* ============================================================
+   dashboard.module.css — Estilos da página Dashboard (page.tsx)
+   ============================================================ */
+
+.page {
+  @apply p-4 md:p-8 flex flex-col gap-6;
+}
+
+/* ---- Topo (Welcome + Ciclo) ---- */
+.topRow {
+  @apply flex flex-col md:flex-row gap-6;
+}
+
+.welcomeCard {
+  @apply flex-1 bg-white flex justify-between items-center relative overflow-hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+  padding: 1.5rem;
+}
+
+.welcomeBar {
+  @apply absolute left-0 top-0 bottom-0 w-1;
+  background-color: #2d7ff9;
+}
+
+.welcomeBarGray {
+  composes: welcomeBar;
+  background-color: #e2e8f0;
+}
+
+.welcomeTitle {
+  @apply text-xl font-light tracking-wide;
+  color: #6b778c;
+}
+
+.welcomeName {
+  @apply font-semibold;
+  color: #2d7ff9;
+}
+
+.welcomeTag {
+  @apply text-xs uppercase mt-1 tracking-widest font-bold;
+  color: #94a3b8;
+}
+
+.welcomeValue {
+  @apply text-3xl font-extrabold tracking-tight;
+  color: #3a4651;
+}
+
+/* ---- Métricas (3 cards) ---- */
+.metricsGrid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.metricCard {
+  @apply bg-white flex flex-col relative overflow-hidden transition-transform;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+}
+.metricCard:hover {
+  transform: translateY(-4px);
+}
+
+.metricBody {
+  @apply p-5 flex justify-between items-start;
+}
+
+.metricTitle {
+  @apply text-2xl font-bold tracking-tight;
+  color: #3a4651;
+}
+
+.metricTitleOrange {
+  composes: metricTitle;
+  color: #e15526;
+}
+
+.metricLabel {
+  @apply text-xs uppercase tracking-widest mt-1;
+  color: #94a3b8;
+}
+
+.metricIconWrap {
+  @apply w-10 h-10 border-2 border-slate-100 rounded flex flex-col items-center justify-center opacity-40;
+}
+
+.metricIcon {
+  @apply w-5 h-5 text-slate-400;
+}
+
+.metricFooter {
+  @apply text-white/90 text-xs py-2 px-4 flex justify-between items-center font-bold tracking-wide mt-auto;
+}
+
+.metricFooterBlue { composes: metricFooter; background-color: #445b9a; }
+.metricFooterOrange { composes: metricFooter; background-color: #e15526; }
+.metricFooterGreen { composes: metricFooter; background-color: #48a84c; }
+
+.bars {
+  @apply flex gap-1 items-end;
+}
+
+.bar {
+  @apply w-1.5;
+}
+
+/* ---- Main Content (Tabela + Gráfico) ---- */
+.mainGrid {
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+}
+
+.tableSection {
+  @apply lg:col-span-2 bg-white flex flex-col;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.tableSectionHeader {
+  @apply p-5 border-b;
+  border-color: rgba(241, 245, 249, 0.5);
+}
+
+.tableSectionTitle {
+  @apply text-xs uppercase tracking-widest font-extrabold;
+  color: #3a4651;
+}
+
+.tableWrap {
+  @apply overflow-x-auto;
+}
+
+.table {
+  @apply w-full text-left border-collapse;
+}
+
+.thead {
+  @apply border-b;
+  border-color: rgba(241, 245, 249, 0.5);
+}
+
+.th {
+  @apply py-4 px-5 text-[11px] uppercase tracking-wider font-bold text-slate-800;
+}
+
+.row {
+  @apply border-b hover:bg-slate-50/50 transition-colors;
+  border-color: rgba(241, 245, 249, 0.3);
+}
+
+.cellId {
+  @apply py-3 px-5 font-semibold text-[13px];
+  color: #2d7ff9;
+}
+
+.cellName {
+  @apply py-3 px-5 font-medium;
+  color: #6b778c;
+}
+
+.cellValue {
+  @apply py-3 px-5;
+  color: #6b778c;
+}
+
+/* ---- Gráfico Analytics ---- */
+.chartSection {
+  @apply bg-white flex flex-col p-5;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.chartTitle {
+  @apply text-xs uppercase tracking-widest font-extrabold mb-6;
+  color: #3a4651;
+}
+
+.chartLegend {
+  @apply flex gap-4 items-center justify-center mb-10;
+}
+
+.legendItem {
+  @apply flex items-center gap-2;
+}
+
+.legendDot {
+  @apply w-2 h-2 rounded-full;
+}
+
+.legendLabel {
+  @apply text-[10px] font-bold uppercase tracking-widest;
+  color: #64748b;
+}
+
+.chartBars {
+  @apply flex-1 flex items-end justify-between px-2 gap-2 mt-auto;
+  height: 200px;
+}
+
+.chartBarCol {
+  @apply flex flex-col items-center gap-2 flex-1;
+}
+
+.chartBar {
+  @apply w-full rounded-t-sm transition-colors;
+  background-color: rgba(59, 130, 246, 0.9);
+}
+.chartBar:hover { background-color: #1e3a8a; }
+
+.chartBarLabel {
+  @apply text-[10px] font-bold truncate max-w-[40px] block;
+  color: #94a3b8;
+}
+
+.chartEmpty {
+  @apply w-full text-center text-xs pb-10;
+  color: #94a3b8;
+}
+

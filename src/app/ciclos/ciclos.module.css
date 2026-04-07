@@ -1,0 +1,113 @@
+@reference "../globals.css";
+
+/* ============================================================
+   ciclos.module.css
+   ============================================================ */
+
+.page {
+  @apply p-4 md:p-8 flex flex-col;
+}
+
+.tableSection {
+  @apply bg-white flex flex-col mt-2 border border-slate-100;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.tableSectionHeader {
+  @apply p-5 border-b flex justify-between items-center;
+  border-color: rgba(241, 245, 249, 0.5);
+  background-color: #fbfcfd;
+}
+
+.tableSectionTitle {
+  @apply text-xs uppercase tracking-widest font-extrabold;
+  color: #3a4651;
+}
+
+.tableWrap {
+  @apply overflow-x-auto;
+}
+
+.table {
+  @apply w-full text-left border-collapse;
+}
+
+.thead {
+  background-color: #fbfcfd;
+}
+
+.th {
+  @apply py-4 px-6 text-[11px] uppercase tracking-wider font-bold text-slate-500;
+}
+
+.thCenter { composes: th; @apply text-center; }
+.thRight { composes: th; @apply text-right; }
+
+.row {
+  @apply border-b border-slate-50 hover:bg-slate-50/50 transition-colors;
+}
+
+.rowClosed {
+  composes: row;
+  background-color: rgba(248, 250, 252, 0.3);
+}
+
+.td {
+  @apply py-4 px-6;
+}
+
+.tdCenter { composes: td; @apply text-center; }
+.tdRight { composes: td; @apply text-right; }
+
+.cicloCode {
+  @apply font-bold text-[14px];
+  color: #3a4651;
+}
+
+.cicloCreated {
+  @apply text-[10px] font-semibold tracking-wider mt-0.5;
+  color: #94a3b8;
+}
+
+.periodo {
+  @apply font-semibold text-[13px];
+  color: #6b778c;
+}
+
+.periodoArrow {
+  @apply mx-1;
+  color: #cbd5e1;
+}
+
+.faturamento {
+  @apply font-extrabold text-[13px];
+  color: #3a4651;
+}
+
+.lucro {
+  @apply text-[10px] font-bold tracking-wider mt-0.5;
+  color: #2d7ff9;
+}
+
+.tamanhoWrap {
+  @apply inline-flex items-center justify-center w-6 h-6 rounded-md font-bold text-[11px] border border-slate-200;
+  background-color: #f4f7f6;
+  color: #3a4651;
+}
+
+.statusAberto {
+  @apply inline-flex items-center justify-center min-w-[70px] uppercase px-3 py-1.5 rounded-[4px] text-[10px] font-bold tracking-widest text-white;
+  background-color: #2d7ff9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.statusFechado {
+  @apply inline-flex items-center justify-center min-w-[70px] uppercase px-3 py-1.5 rounded-[4px] text-[10px] font-bold tracking-widest;
+  background-color: #e2e8f0;
+  color: #64748b;
+}
+
+.emptyRow {
+  @apply py-12 text-center text-slate-400 font-semibold;
+}
+

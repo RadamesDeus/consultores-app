@@ -1,0 +1,51 @@
+@reference "../app/globals.css";
+
+/* ============================================================
+   Header.module.css — Estilos do componente Header
+   ============================================================ */
+
+.header {
+  @apply h-[72px] text-white flex items-center justify-between px-8 shrink-0;
+  background-color: #3b82f6;
+}
+
+.title {
+  @apply text-lg tracking-wide opacity-90 drop-shadow-sm font-medium;
+}
+
+.actions {
+  @apply flex items-center gap-6;
+}
+
+.fastOrderWrapper {
+  @apply hidden md:block;
+}
+
+.iconBtn {
+  @apply bg-transparent p-2 rounded-full transition-colors;
+}
+.iconBtn:hover {
+  background-color: rgb(255 255 255 / 0.1);
+}
+
+.iconBtnHidden {
+  @apply hidden md:block;
+  composes: iconBtn;
+}
+
+.bellIcon {
+  @apply relative;
+  composes: iconBtn;
+}
+
+.bellDot {
+  @apply absolute top-1 right-1 w-2 h-2 rounded-full;
+  background-color: #ff5252;
+  border: 1px solid #3b82f6;
+}
+
+.icon {
+  @apply w-5 h-5;
+  color: rgb(255 255 255 / 0.9);
+}
+
