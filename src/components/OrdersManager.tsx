@@ -35,10 +35,12 @@ export default function OrdersManager({ initialPedidos, ciclos, subConsultores }
 
   const stats = useMemo(() => {
     const totalVendido = filteredPedidos.reduce((acc, curr) => acc + curr.valorTotal, 0)
+    const totalBoleto = filteredPedidos.reduce((acc, curr) => acc + curr.valorTotal - (curr.valorTotal * (curr.margemMaster/100)), 0)
     const totalLucro = filteredPedidos.reduce((acc, curr) => acc + curr.lucro, 0)
+
     const pendentes = filteredPedidos.filter(p => p.status === 'LANCADO').length
     const volume = filteredPedidos.length
-    return { totalVendido, totalLucro, pendentes, volume }
+    return { totalVendido, totalLucro, pendentes, volume, totalBoleto }
   }, [filteredPedidos])
 
   const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -46,6 +48,14 @@ export default function OrdersManager({ initialPedidos, ciclos, subConsultores }
   return (
     <div className={styles.wrapper}>
       {/* Stats Cards */}
+
+      <OrdersFilters
+        ciclos={ciclos}
+        subConsultores={subConsultores}
+        filters={filters}
+        setFilters={setFilters}
+      />
+
       <div className={styles.statsGrid}>
         <Card className={styles.cardBlue}>
           <CardContent className={styles.cardContent}>
@@ -56,6 +66,19 @@ export default function OrdersManager({ initialPedidos, ciclos, subConsultores }
               <span className={styles.cardTag}>Catálogo</span>
             </div>
             <h3 className={styles.cardValue}>{BRL.format(stats.totalVendido)}</h3>
+            <p className={styles.cardLabel}>Volume de Venda Bruta</p>
+          </CardContent>
+        </Card>
+
+        <Card className={styles.cardRed}>
+          <CardContent className={styles.cardContent}>
+            <div className={styles.cardTop}>
+              <div className={styles.iconWrapRed}>
+                <DollarSign className={styles.iconRed} />
+              </div>
+              <span className={styles.cardTag}>Boleto</span>
+            </div>
+            <h3 className={styles.cardValue}>{BRL.format(stats.totalBoleto)}</h3>
             <p className={styles.cardLabel}>Volume de Venda Bruta</p>
           </CardContent>
         </Card>
@@ -86,7 +109,7 @@ export default function OrdersManager({ initialPedidos, ciclos, subConsultores }
           </CardContent>
         </Card>
 
-        <Card className={styles.cardSlate}>
+        {/* <Card className={styles.cardSlate}>
           <CardContent className={styles.cardContent}>
             <div className={styles.cardTop}>
               <div className={styles.iconWrapSlate}>
@@ -97,15 +120,8 @@ export default function OrdersManager({ initialPedidos, ciclos, subConsultores }
             <h3 className={styles.cardValue}>{stats.volume}</h3>
             <p className={styles.cardLabel}>Total de Pedidos Exibidos</p>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
-
-      <OrdersFilters
-        ciclos={ciclos}
-        subConsultores={subConsultores}
-        filters={filters}
-        setFilters={setFilters}
-      />
 
       <OrdersTable pedidos={filteredPedidos} />
     </div>

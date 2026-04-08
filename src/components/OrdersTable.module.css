@@ -107,6 +107,12 @@
   color: #48a84c;
 }
 
+.boleto {
+  @apply font-extrabold;
+  color: #ff0000;
+}
+
+
 /* Status badges */
 .statusBadge {
   @apply text-[10px] uppercase font-extrabold tracking-widest px-2 py-1 rounded-sm border;

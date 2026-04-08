@@ -27,6 +27,11 @@
   border-left-color: #2d7ff9;
 }
 
+.cardRed {
+  composes: card;
+  border-left-color: #f92d2d;
+}
+
 .cardGreen {
   composes: card;
   border-left-color: #48a84c;
