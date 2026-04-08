@@ -3,6 +3,8 @@ import AddCicloForm from "@/components/AddCicloForm"
 import { Badge } from "@/components/ui/badge"
 import styles from './ciclos.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CiclosPage() {
   const ciclos = await prisma.ciclo.findMany({
     orderBy: { dataInicio: 'desc' },

@@ -2,6 +2,8 @@ import { Paperclip, Ban, Lock } from "lucide-react"
 import prisma from "@/lib/prisma"
 import styles from './dashboard.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Dashboard() {
   const cicloAtual = await prisma.ciclo.findFirst({
     where: { status: 'ABERTO' },

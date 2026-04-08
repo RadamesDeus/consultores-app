@@ -4,6 +4,8 @@ import { Ban, CheckCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import styles from './subconsultores.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export default async function SubConsultoresPage() {
   const subs = await prisma.subConsultor.findMany({
     orderBy: { createdAt: 'desc' }
