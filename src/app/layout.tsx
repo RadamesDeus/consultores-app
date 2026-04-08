@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   description: "Gerenciador completo de sub-consultores e ciclos.",
 }
 
+import ClientLayout from "@/components/ClientLayout"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,13 +30,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <body className={styles.body}>
-        <Sidebar />
-        <div className={styles.contentWrapper}>
-          <Header />
-          <main className={styles.main}>
-            {children}
-          </main>
-        </div>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   )

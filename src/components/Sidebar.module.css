@@ -5,8 +5,21 @@
    ============================================================ */
 
 .sidebar {
-  @apply w-64 bg-white border-r flex flex-col h-full shrink-0;
+  @apply fixed md:relative z-50 w-64 bg-white border-r flex flex-col h-full shrink-0 transition-transform duration-300 ease-in-out;
+  @apply -translate-x-full md:translate-x-0;
   border-color: #eaedf1;
+}
+
+.sidebarOpen {
+  @apply translate-x-0;
+}
+
+.overlay {
+  @apply fixed inset-0 bg-slate-900/40 backdrop-blur-[2px] z-40 md:hidden;
+}
+
+.closeBtn {
+  @apply absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 md:hidden;
 }
 
 /* Área do usuário (topo) */
