@@ -25,7 +25,7 @@ export default async function Dashboard() {
 
     totalLucro = pedidos.reduce((acc: number, curr: any) => acc + curr.lucro, 0)
     qtdVendas = pedidos.length
-    pendencias = pedidos.filter((p: any) => p.status === 'LANCADO').length
+    pendencias = pedidos.filter((p: any) => p.status === 'Lançado').length
 
 
     pedidosRecentes = pedidos.slice(0, 10)
@@ -55,7 +55,7 @@ export default async function Dashboard() {
             </h2>
             <p className={styles.welcomeTag}>Resumo Financeiro</p>
           </div>
-          <div className={styles.welcomeValue}>R$ {(totalLucro * 4).toFixed(0)}</div>
+          {/* <div className={styles.welcomeValue}>R$ {(totalLucro).toFixed(0)}</div> */}
         </div>
 
         <div className={styles.welcomeCard}>
@@ -114,7 +114,7 @@ export default async function Dashboard() {
           <div className={styles.metricBody}>
             <div>
               <h3 className={styles.metricTitle}>{qtdVendas}</h3>
-              <p className={styles.metricLabel}>Pedidos Pagos</p>
+              <p className={styles.metricLabel}>Pedidos</p>
             </div>
             <div className={styles.metricIconWrap}>
               <Lock className={styles.metricIcon} />
