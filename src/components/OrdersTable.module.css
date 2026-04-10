@@ -10,11 +10,11 @@
 }
 
 .tableScroll {
-  @apply overflow-x-auto;
+  @apply overflow-x-auto w-full custom-scrollbar;
 }
 
 .table {
-  @apply w-full text-left border-collapse;
+  @apply w-full text-left border-collapse min-w-[750px] md:min-w-0;
 }
 
 /* ---- Cabeçalho ---- */
@@ -106,6 +106,12 @@
   @apply font-extrabold;
   color: #48a84c;
 }
+
+.boleto {
+  @apply font-extrabold;
+  color: #ff0000;
+}
+
 
 /* Status badges */
 .statusBadge {

@@ -20,10 +20,10 @@ async function main() {
 
   // 2. Criar Sub-Consultores
   const subs = [
-    { nome: 'Maria Silva', telefone: '11999999991', comissao: 25.0 },
-    { nome: 'João Mendes', telefone: '11999999992', comissao: 20.0 },
-    { nome: 'Carla Pereira', telefone: '11999999993', comissao: 30.0 },
-    { nome: 'Rafael Fernandes', telefone: '11999999994', comissao: 15.0 },
+    { nome: 'Dalva', telefone: '71999999991', comissao: 31.0 },
+    { nome: 'Paty', telefone: '71999999992', comissao: 30.0 },
+    { nome: 'Ataide', telefone: '71999999993', comissao: 30.0 },
+    { nome: 'Ana', telefone: '71999999994', comissao: 30.0 },
   ]
 
   for (const s of subs) {

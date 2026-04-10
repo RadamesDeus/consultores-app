@@ -1,11 +1,13 @@
-'use client'
-
-import { Bell, Search, Grip } from 'lucide-react'
+import { Bell, Search, Grip, Menu } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import FastOrderModal from './FastOrderModal'
 import styles from './Header.module.css'
 
-export default function Header() {
+interface HeaderProps {
+  onMenuClick?: () => void
+}
+
+export default function Header({ onMenuClick }: HeaderProps) {
   const pathname = usePathname()
 
   const titles: Record<string, string> = {
@@ -19,7 +21,12 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.title}>{currentTitle}</div>
+      <div className={styles.left}>
+        <button className={styles.menuBtn} onClick={onMenuClick}>
+          <Menu size={20} />
+        </button>
+        <div className={styles.title}>{currentTitle}</div>
+      </div>
 
       <div className={styles.actions}>
         <div className={styles.fastOrderWrapper}>

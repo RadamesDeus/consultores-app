@@ -3,6 +3,8 @@ import AddCicloForm from "@/components/AddCicloForm"
 import { Badge } from "@/components/ui/badge"
 import styles from './ciclos.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CiclosPage() {
   const ciclos = await prisma.ciclo.findMany({
     orderBy: { dataInicio: 'desc' },
@@ -34,9 +36,9 @@ export default async function CiclosPage() {
               </tr>
             </thead>
             <tbody>
-              {ciclos.map((c) => {
-                const lucroTotal = c.pedidos.reduce((acc, curr) => acc + curr.lucro, 0)
-                const faturamentoTotal = c.pedidos.reduce((acc, curr) => acc + curr.valorTotal, 0)
+              {ciclos.map((c: any) => {
+                const lucroTotal = c.pedidos.reduce((acc: number, curr: any) => acc + curr.lucro, 0)
+                const faturamentoTotal = c.pedidos.reduce((acc: number, curr: any) => acc + curr.valorTotal, 0)
                 const isAberto = c.status === 'ABERTO'
 
                 return (

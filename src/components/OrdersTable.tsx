@@ -65,7 +65,8 @@ export default function OrdersTable({ pedidos }: OrdersTableProps) {
                   </div>
                 </th>
                 <th className={styles.th}>Ciclo</th>
-                <th className={styles.thRight}>Total Estip.</th>
+                <th className={styles.thRight}>Total Catálogo</th>
+                <th className={styles.thRight}>Total Boleto</th>
                 <th className={styles.thGreen}>Lucro Master</th>
                 <th className={styles.thCenter}>Status</th>
                 <th className={styles.thCenter}>Ações</th>
@@ -95,6 +96,9 @@ export default function OrdersTable({ pedidos }: OrdersTableProps) {
                     </td>
                     <td className={styles.tdRight}>
                       <span className={styles.valorTotal}>{BRL.format(ped.valorTotal)}</span>
+                    </td>
+                    <td className={styles.tdRight}>
+                      <span className={styles.boleto}>{BRL.format(ped.valorTotal - (ped.valorTotal * (ped.margemMaster / 100)))}</span>
                     </td>
                     <td className={styles.tdRight}>
                       <span className={styles.lucro}>{BRL.format(ped.lucro)}</span>

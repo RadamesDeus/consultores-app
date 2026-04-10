@@ -4,6 +4,8 @@ import OrdersManager from '@/components/OrdersManager'
 import { getTodosPedidos } from '@/actions/pedidos'
 import styles from './pedidos.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export default async function PedidosPage() {
   const initialPedidos = await getTodosPedidos()
   const ciclos = await prisma.ciclo.findMany({
@@ -16,7 +18,7 @@ export default async function PedidosPage() {
 
   return (
     <div className={styles.page}>
-      <OrdersHeader ciclos={ciclos} subConsultores={subConsultores} />
+      <OrdersHeader />
 
       <OrdersManager
         initialPedidos={initialPedidos}

@@ -44,7 +44,7 @@ export async function parseFastOrder(text: string) {
     }
 
     if (!bestSub || bestScore < 0.6) {
-      const exactMatch = subs.find(s => text.toLowerCase().includes(s.nome.split(" ")[0].toLowerCase()));
+      const exactMatch = subs.find((s: any) => text.toLowerCase().includes(s.nome.split(" ")[0].toLowerCase()));
       if (exactMatch) bestSub = exactMatch;
       else return { success: false, message: "Não consegui identificar nenhum nome de consultor no texto." }
     }

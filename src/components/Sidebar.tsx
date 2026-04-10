@@ -1,11 +1,16 @@
 'use client'
 
-import Link from 'next/link'
-import { LayoutDashboard, Users, RefreshCw, FileText, Settings, UserCircle } from 'lucide-react'
+import { LayoutDashboard, Users, RefreshCw, FileText, Settings, UserCircle, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 import styles from './Sidebar.module.css'
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen?: boolean
+  onClose?: () => void
+}
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname()
 
   const links = [
@@ -16,9 +21,20 @@ export default function Sidebar() {
     { name: 'Configurações', href: '/configuracoes', icon: Settings, badge: null },
   ]
 
+  const sidebarClass = `${styles.sidebar} ${isOpen ? styles.sidebarOpen : ''}`
+
   return (
-    <aside className={styles.sidebar}>
-      {/* Área do usuário */}
+    <>
+      {/* Overlay para mobile */}
+      {isOpen && <div className={styles.overlay} onClick={onClose} />}
+
+      <aside className={sidebarClass}>
+        {/* Botão fechar (Mobile) */}
+        <button className={styles.closeBtn} onClick={onClose}>
+          <X size={20} />
+        </button>
+
+        {/* Área do usuário */}
       <div className={styles.userBox}>
         <div className={styles.avatar}>
           <UserCircle className={styles.avatarIcon} />
@@ -61,5 +77,6 @@ export default function Sidebar() {
         })}
       </div>
     </aside>
+    </>
   )
 }

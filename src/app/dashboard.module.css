@@ -14,9 +14,10 @@
 }
 
 .welcomeCard {
-  @apply flex-1 bg-white flex justify-between items-center relative overflow-hidden;
+  @apply flex-1 bg-white flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
   padding: 1.5rem;
+  gap: 1rem;
 }
 
 .welcomeBar {
@@ -130,7 +131,7 @@
 }
 
 .table {
-  @apply w-full text-left border-collapse;
+  @apply w-full text-left border-collapse min-w-[600px] md:min-w-0;
 }
 
 .thead {
